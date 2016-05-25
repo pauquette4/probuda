@@ -12,5 +12,26 @@
     "build:client": "(cd client && npm run build:client --silent",
     "build:dev:client": "(cd client && npm run build:dev:client --silent)",
     "test": "rspec"
+  },
+  "dependencies": {
+    "bootstrap-sass-loader": "^1.0.10",
+    "css-loader": "^0.23.1",
+    "react-redux": "^4.4.5",
+    "react-router-redux": "^4.0.4",
+    "redux": "^3.5.2",
+    "resolve-url-loader": "^1.4.3",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7"
+  },
+  "devDependencies": {
+    "babel-plugin-react-html-attrs": "^2.0.0",
+    "bootstrap": "^3.3.6",
+    "css-loader": "^0.23.1",
+    "jquery": "^2.2.4",
+    "resolve-url-loader": "^1.4.3",
+    "sass-loader": "^3.2.0",
+    "script-loader": "^0.7.0",
+    "style-loader": "^0.13.1"
   }
 }

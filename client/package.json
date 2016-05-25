@@ -34,8 +34,13 @@
     "react": "^0.14.8 || ^15.0.0",
     "react-dom": "^0.14.8 || ^15.0.0",
     "react-on-rails": "5.2.0",
+    "react-router": "^2.4.1",
     "webpack": "^1.12.14"
   },
   "devDependencies": {
+    "babel-plugin-react-html-attrs": "^2.0.0",
+    "bootstrap": "^3.3.6",
+    "script-loader": "^0.7.0",
+    "style-loader": "^0.13.1"
   }
 }
