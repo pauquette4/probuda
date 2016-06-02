@@ -3,7 +3,9 @@ import React from 'react';
 export default class About extends React.Component {
   render() {
     return (
-      <h1 class="about">About</h1> 
+      <div className="content-wrapper">
+        <h1>About</h1>
+      </div>
     );
   }
 }

@@ -20,21 +20,29 @@
 // Global
 
 /* Base Structure */
-html,
-body {
-    
-    height: 100%;
-    background-color: #333;
-}
 
-body {
-    
-    color: #fff;
+
+/*Content Structure */
+
+.content-wrapper {
+    padding-left: 150px;
+    background-color: #fff;
+    margin-top: 100px;
     text-align: center;
-    text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
 
+// .content-wrapper {
+//   height: 100vh;
+//   margin-top: 200px;
+//   background-color: #f9e3e3;  
+// }
+
+// @media(min-width:768px) {
+//     .content-wrapper {
+//       margin-top: 50px;
+//     }
+// }
 
 /* Links */
 a,
@@ -47,7 +55,7 @@ a:hover {
 .btn-cover,
 .btn-cover:hover,
 .btn-cover:focus {
-    color: #333;
+    color: #A35F5F;
     text-shadow: none; /*Prevent inheritance from body */
     background-color: #fff;
     border: 1px solid #fff;
@@ -58,10 +66,17 @@ a:hover {
 .site-wrapper {
   display: table;
   width: 100%;
-  height: 100%; /* For at least Firefox */
+  height: 100vh; /* For at least Firefox */
+  background: image_url('bg3d_light_pink_v1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #A35F5F;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
   min-height: 100%;
-//   -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-//           box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+   -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
 .site-wrapper-inner {
   display: table-cell;
@@ -78,9 +93,11 @@ a:hover {
 }
 
 
+
 /*
  * Header
  */
+
 .masthead-brand {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -114,6 +131,10 @@ a:hover {
   border-bottom-color: #fff;
 }
 
+.masthead-nav {
+    margin: auto;
+  }
+
 @media (min-width: 768px) {
   .masthead-brand {
     float: left;
@@ -125,6 +146,7 @@ a:hover {
 
 .cover {
     padding: 0px 20px;
+    vertical-align: middle;
 }
 
 .cover .btn-cover {
@@ -143,14 +165,14 @@ a:hover {
 
 @media (min-width: 768px) {
   /* Pull out the header and footer */
-//   .masthead {
-//     position: fixed;
-//     top: 0;
-//   }
-//   .mastfoot {
-//     position: fixed;
-//     bottom: 0;
-//   }
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
   /* Start the vertical centering */
   .site-wrapper-inner {
     vertical-align: middle;
@@ -163,56 +185,46 @@ a:hover {
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1000px) {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 700px;
+    width: 1000px;
   }
 }
 
-// About
-// .about {
-//     color: red;
-// }
+
+// Top Navbar
+
+.top-nav li, ul {
+    display: inline;
+    float: left;
+    padding-right: 10px;
+}
+
+//Side Navbar
+
+@media(min-width: 768px) {
+    .side-nav {
+        position: fixed;
+        overflow-x: hidden;
+        top: 50px;
+        left: 150px;
+        width: 150px;
+        margin-left: -150px;
+        border: none;
+        border-radius: 0;
+        overflow-y: auto;
+        background-color: #222;
+        bottom: 0;
+        padding-bottom: 40px;
+    }
+}
+
+//Content
 
 
-// // Top Navbar
 
-// .top-nav li, ul {
-//     display: inline;
-//     float: left;
-//     padding-right: 10px;
-// }
 
-// //Side Navbar
-
-// @media(min-width: 768px) {
-//     .side-nav {
-//         position: fixed;
-//         overflow-x: hidden;
-//         top: 50px;
-//         left: 150px;
-//         width: 150px;
-//         margin-left: -150px;
-//         border: none;
-//         border-radius: 0;
-//         overflow-y: auto;
-//         background-color: #222;
-//         bottom: 0;
-//         padding-bottom: 40px;
-//     }
-// }
-
-// //Content
-
-// .content-wrapper {
-//     width: 100%;
-//     padding: 0;
-// }
-
-// .about {
-//   margin-top: 100px;
-// }
 
 

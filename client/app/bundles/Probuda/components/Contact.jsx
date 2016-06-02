@@ -4,7 +4,9 @@ export default class Contact extends React.Component {
   render() {
     const { name } = this.props;
     return (
-       <h1 className="contact">Contact</h1>  
+      <div className="content-wrapper">
+       <h1>Contact</h1>  
+      </div>
     );
   }
 }
