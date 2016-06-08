@@ -1,7 +1,16 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
+import Signup_Form from './Signup_Form';
 
 export default class Signup extends React.Component {
+  
+  constructor(props){
+    super();
+    
+    
+    
+  }
+  
   render () {
     return (
      <div className="site-wrapper">
@@ -9,7 +18,9 @@ export default class Signup extends React.Component {
           <div className="cover-container">
             <div className="masthead clearfix">
               <div className="inner">
-                <h3 className="masthead-brand">Probuda</h3>
+                <li>
+                  <Link to="/cover"><h3 className="masthead-brand">Probuda</h3></Link>
+                </li>
                 <nav>
                   <ul className="nav masthead-nav">
                     <li className="active"><Link to="/signup">Sign Up</Link></li>
@@ -21,6 +32,10 @@ export default class Signup extends React.Component {
             </div>
             <div className="inner cover">
               <h1 className="cover-heading">This will be the signup page</h1>
+              <Signup_Form/>
+                
+              
+             
             </div>
             <div className="mastfoot">
               <div className="inner">

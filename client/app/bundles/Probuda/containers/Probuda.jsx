@@ -2,6 +2,12 @@ import React from 'react';
 import Nav from '../components/Nav';
 
 export default class Probuda extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      user: "User"
+    };
+  }
   render() {
     return (
       <div id="wrapper">

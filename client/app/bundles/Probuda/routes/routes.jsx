@@ -9,16 +9,22 @@ import Home from '../components/Home';
 import About from '../components/About';
 import Contact from '../components/Contact';
 import Signup from '../components/Signup';
+import Profile from '../components/Profile';
+import Login from '../components/Login';
+
+
 
 export default  (
   
   <Router history={hashHistory}>
     <Route path="/cover" component={Cover} />
     <Route path="/signup" component={Signup} />
+    <Route path="/login" component={Signup} />
     <Route path="/" component={Probuda}>
       <IndexRoute component={Home}/>
       <Route path="/about" component={About}/>
       <Route path="/contact" component={Contact}/>
+      <Route path="/profile" component={Profile}/>
     </Route>
   </Router>
 

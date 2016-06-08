@@ -1,8 +1,42 @@
 import React from 'react';
 import { Link, IndexLink } from 'react-router';
+import ProjectStore from '../stores/ProjectStore';
+import * as ProjectActions from '../actions/ProjectActions';
+import Project from './Project';
 
 export default class Nav extends React.Component {
+  constructor(){
+    super();
+    this.getProjects = this.getProjects.bind(this);
+    this.state = {
+      projects: ProjectStore.getAll(),
+    };
+  }
+  
+  componentWillMount(){
+    ProjectStore.on("change", this.getProjects);
+  }
+  
+  componentWillUnmount(){
+    ProjectStore.removeListener("change", this.getProjects);
+  }
+  
+  getProjects(){
+    this.setState({
+      projects: ProjectStore.getAll(),
+    });
+  }
+  
+  createProject() {
+    ProjectActions.createProject(Date.now());
+  }
+  
   render() {
+    const { projects } = this.state;
+    const ProjectComponents = projects.map((project) => {
+      return <li><Link to="#"><Project key={project.id} {...project}/></Link></li>;
+    });
+    
     return (
        <div className="wrapper">
          <nav className="navbar navbar-inverse navbar-fixed-top top-nav" role="navigation">
@@ -25,7 +59,7 @@ export default class Nav extends React.Component {
                 <button className="btn btn-warning dropdown-toggle btn-right navbar-btn" type="button" 
                         data-toggle="dropdown">User <b className="caret"></b></button>
                 <ul className="dropdown-menu">
-                  <li><a href="#">Profile</a></li>
+                  <li><Link to="/profile">Profile</Link></li>
                   <li><a href="#">Settings</a></li>
                   <li><a href="#">Sign Out</a></li>
                 </ul>
@@ -34,9 +68,10 @@ export default class Nav extends React.Component {
           </div>
           <div className="collapse navbar-collapse navbar-ex1-collapse sidebar">
             <ul className="nav navbar-nav side-nav">
-              <li><a href="#">Project 1</a></li>
-              <li><a href="#">Project 2</a></li>
-              <li><a href="#">Project 3</a></li>
+              {ProjectComponents}
+              <li>
+                <button onClick={this.createProject.bind(this)}>Create!</button>
+              </li>
             </ul>
           </div>
         </nav> 

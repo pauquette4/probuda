@@ -6,6 +6,9 @@ gem 'rails', '5.0.0.rc1'
 # Use React, React Router, and Webpack
 gem "react_on_rails", "~> 5"
 
+#Use flux
+gem 'flux-rails-assets'
+
 # Use sqlite3 as the database for Active Record
 
 

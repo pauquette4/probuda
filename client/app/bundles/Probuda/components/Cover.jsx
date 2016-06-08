@@ -13,6 +13,7 @@ export default class Cover extends React.Component {
                 <nav>
                   <ul className="nav masthead-nav">
                     <li><Link to="/signup">Sign Up</Link></li>
+                    <li><Link to="/login">Log In</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
                   </ul>
