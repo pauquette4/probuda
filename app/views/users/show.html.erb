@@ -1,2 +1,4 @@
-<%= react_component("RouterApp", prerender: false ) %>
+<%= react_component("RouterApp", props: { logged_in: logged_in?, 
+                                          authenticity_token: form_authenticity_token },
+                                          prerender: false ) %>
 

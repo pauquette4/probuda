@@ -2,14 +2,24 @@ import React from 'react';
 import { Link, IndexLink } from 'react-router';
 
 export default class Cover extends React.Component {
+  constructor(props) {
+    super(props);
+    
+    }
+    
+  
+  
   render () {
+    
     return (
       <div className="site-wrapper">
         <div className="site-wrapper-inner">
           <div className="cover-container">
             <div className="masthead clearfix">
               <div className="inner">
-                <li className="active"><h3 className="masthead-brand">Probuda</h3></li>
+                <Link to="/cover">
+                  <h3 className="masthead-brand">Probuda</h3>
+                </Link>
                 <nav>
                   <ul className="nav masthead-nav">
                     <li><Link to="/signup">Sign Up</Link></li>
@@ -30,6 +40,7 @@ export default class Cover extends React.Component {
             </div>
             <div className="mastfoot">
               <div className="inner">
+              
                 <p>Probuda, by Bryan Pauquette.</p>
             </div>
           </div>

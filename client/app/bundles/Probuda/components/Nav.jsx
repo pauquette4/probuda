@@ -37,6 +37,7 @@ export default class Nav extends React.Component {
       return <li><Link to="#"><Project key={project.id} {...project}/></Link></li>;
     });
     
+    
     return (
        <div className="wrapper">
          <nav className="navbar navbar-inverse navbar-fixed-top top-nav" role="navigation">
@@ -61,7 +62,8 @@ export default class Nav extends React.Component {
                 <ul className="dropdown-menu">
                   <li><Link to="/profile">Profile</Link></li>
                   <li><a href="#">Settings</a></li>
-                  <li><a href="#">Sign Out</a></li>
+                  <li><a rel="nofollow" data-method="delete" href="/logout">
+                            Log out</a></li>
                 </ul>
               </li>
             </ul>

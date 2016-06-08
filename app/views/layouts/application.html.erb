@@ -6,14 +6,16 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   
   <%= csrf_meta_tags %>
-  
+</header>
 </head>
 <body>
-
-  <%= render '/shared/error_messages' %>
+<div>
+  <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
   
   <%= yield %>
-
+</div>
 
 </body>
 </html>

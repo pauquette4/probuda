@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 
 export default class Signup_Form extends React.Component {
@@ -44,7 +44,7 @@ export default class Signup_Form extends React.Component {
   render(){
     return(
       
-      <form className='form-inline' accept-charset="UTF-8" action="/users" 
+      <form accept-charset="UTF-8" action="/users" 
             class="new_user" id="new_user" method="post">
         <input name="utf8" type="hidden" value="&#x2713;" />
         <input type="hidden" name="authenticity_token" 
@@ -76,7 +76,7 @@ export default class Signup_Form extends React.Component {
           </input>
         </div>
         
-         <input className="btn btn-primary" name="commit" type="submit"
+         <input className="btn btn-lg btn-default btn-cover" name="commit" type="submit"
          value="Create my account" />
       </form>
       

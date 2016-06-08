@@ -19,7 +19,7 @@ export default  (
   <Router history={hashHistory}>
     <Route path="/cover" component={Cover} />
     <Route path="/signup" component={Signup} />
-    <Route path="/login" component={Signup} />
+    <Route path="/login" component={Login} />
     <Route path="/" component={Probuda}>
       <IndexRoute component={Home}/>
       <Route path="/about" component={About}/>

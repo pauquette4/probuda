@@ -46,6 +46,7 @@ module.exports = {
         NODE_ENV: JSON.stringify(nodeEnv),
       },
     }),
+    
    
     // https://webpack.github.io/docs/list-of-plugins.html#2-explicit-vendor-chunk
     new webpack.optimize.CommonsChunkPlugin({

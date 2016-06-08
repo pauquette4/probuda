@@ -5,7 +5,7 @@ import Signup_Form from './Signup_Form';
 export default class Signup extends React.Component {
   
   constructor(props){
-    super();
+    super(props);
     
     
     
@@ -18,12 +18,11 @@ export default class Signup extends React.Component {
           <div className="cover-container">
             <div className="masthead clearfix">
               <div className="inner">
-                <li>
-                  <Link to="/cover"><h3 className="masthead-brand">Probuda</h3></Link>
-                </li>
+                <Link to="/cover"><h3 className="masthead-brand">Probuda</h3></Link>
                 <nav>
                   <ul className="nav masthead-nav">
                     <li className="active"><Link to="/signup">Sign Up</Link></li>
+                    <li><Link to="/login">Log In</Link></li>
                     <li><Link to="/about">About</Link></li>
                     <li><Link to="/contact">Contact</Link></li>
                   </ul>
@@ -31,11 +30,12 @@ export default class Signup extends React.Component {
               </div>
             </div>
             <div className="inner cover">
-              <h1 className="cover-heading">This will be the signup page</h1>
-              <Signup_Form/>
-                
-              
-             
+              <h1 className="cover-heading">Sign up!</h1>
+                <div class="row">
+                  <div className="col-sm-6 col-sm-offset-3">
+                    <Signup_Form/>
+                  </div>
+                </div>
             </div>
             <div className="mastfoot">
               <div className="inner">
