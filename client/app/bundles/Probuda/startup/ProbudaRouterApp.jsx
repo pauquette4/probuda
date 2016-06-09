@@ -3,11 +3,7 @@ import { Router } from 'react-router';
 import routes from '../routes/routes';
 
 
-export default () => {
+export default () => 
+
+<Router children={routes} />;
   
-  return (
-    
-      <Router children={routes} />
-  
-  );
-};

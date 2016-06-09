@@ -61,6 +61,15 @@ a:hover {
     border: 1px solid #fff;
 }
 
+.btn-cover-invert,
+.btn-cover-invert:hover,
+.btn-cover-invert:focus {
+    color: #fff;
+    text-shadow: none; /*Prevent inheritance from body */
+    background-color: #A35F5F;
+    border: 1px solid #A35F5F;
+}
+
 /* Cover */
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {

@@ -1,19 +1,31 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import Rails_Context from './Rails_Context';
 
 
 
 export default class Login_Form extends React.Component {
-  constructor(props) {
-    super();
+  
+  static PropTypes = {
+    actions: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
+    railsContext: PropTypes.object.isRequired
+  }
+  
+  constructor(props, context) {
+    super(props, context);
     
   }
   render(){
+    const { data, railsContext } = this.props;
+    const { authenticity_token, name } = data;
+    
     return(
       
       <form accept-charset="UTF-8" action="/login"
             method="post">
         <input name="utf8" type="hidden" value="&#x2713;" />
-        
+        <input name="authenticity_token" type="hidden"
+         value={ authenticity_token } />
         <div className='form-group'>
           <input type='email' className='form-control' placeholder='Email'
                  id="session_email" name="session[email]">

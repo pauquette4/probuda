@@ -1,6 +1,11 @@
 import React from 'react';
+import ReactOnRails from 'react-on-rails';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import ConfigureStore from '../store/ConfigureStore';
 import { Link, IndexLink } from 'react-router';
 import Signup_Form from './Signup_Form';
+import SignupContainer from './SignupContainer';
 
 export default class Signup extends React.Component {
   
@@ -12,6 +17,7 @@ export default class Signup extends React.Component {
   }
   
   render () {
+    const store = ReactOnRails.getStore("ProbudaStore");
     return (
      <div className="site-wrapper">
         <div className="site-wrapper-inner">
@@ -33,7 +39,9 @@ export default class Signup extends React.Component {
               <h1 className="cover-heading">Sign up!</h1>
                 <div class="row">
                   <div className="col-sm-6 col-sm-offset-3">
-                    <Signup_Form/>
+                    <Provider store={store}>
+                      <SignupContainer />
+                    </Provider>
                   </div>
                 </div>
             </div>

@@ -1,8 +1,12 @@
 import React from 'react';
 
+
 export default class Home extends React.Component {
-  constructor(props) {
-    super(props);
+
+  
+  constructor(props, context) {
+    super(props, context);
+   
    
    
   }
@@ -15,10 +19,14 @@ export default class Home extends React.Component {
                           Sign Up</a></li> :
     <li><a rel="nofollow" data-method="delete" href="/logout"><span className="glyphicon glyphicon-user"></span>
                           Sign Out</a></li>;
+                          
+    
+    
     return (
       <div className="content-wrapper">
         <h1 className="home">Welcome to your dashboard!</h1>
         {loginIcon}
+        
       </div>
     );
   }

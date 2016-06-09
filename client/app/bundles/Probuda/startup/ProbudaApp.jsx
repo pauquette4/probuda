@@ -1,6 +1,15 @@
 import React from 'react';
-import Probuda from '../containers/Probuda';
+import ReactOnRails from 'react-on-rails';
+import ProbudaContainer from '../components/ProbudaContainer';
+import { Provider } from 'react-redux';
 
-export default  (
-  <Probuda />
-);
+export default () => {
+
+  const store = ReactOnRails.getStore('ProbudaStore');
+
+  return (
+      <Provider store={store}>
+        <ProbudaContainer />
+      </Provider>
+    );
+};

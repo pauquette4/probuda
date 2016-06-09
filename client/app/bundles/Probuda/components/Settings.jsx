@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import ReactOnRails from 'react-on-rails';
-import { render } from 'react-dom'
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import CounterApp from './CounterApp';
+import SettingsContainer from './SettingsContainer';
 import ConfigureStore from '../store/ConfigureStore';
-import {setCounter} from '../actions/CounterActions'
 
 
 
@@ -16,12 +15,12 @@ export default class Root extends Component {
   // }
   render() {
     
-    const store = ReactOnRails.getStore("CounterReduxStore");
+    const store = ReactOnRails.getStore("ProbudaStore");
     
     return (
       <div className="content-wrapper">
         <Provider store={store}>
-          <CounterApp />
+          <SettingsContainer />
         </Provider>
       </div>
     );

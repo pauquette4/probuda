@@ -1,14 +1,17 @@
-import React from 'react'
+import React from 'react';
+import ReactOnRails from 'react-on-rails';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import ConfigureStore from '../store/ConfigureStore';
 import { Link, IndexLink } from 'react-router';
 import Login_Form from './Login_Form';
+import LoginContainer from './LoginContainer'
 
 export default class Login extends React.Component {
-  constructor(){
-    super();
 
-  }
   
   render () {
+    const store = ReactOnRails.getStore("ProbudaStore");
     return (
      <div className="site-wrapper">
         <div className="site-wrapper-inner">
@@ -30,7 +33,9 @@ export default class Login extends React.Component {
               <h1 className="cover-heading">Log in</h1>
                 <div class="row">
                   <div className="col-sm-6 col-sm-offset-3">
-                    <Login_Form/>
+                    <Provider store={store}>
+                      <LoginContainer />
+                    </Provider>
                   </div>
                 </div>
             </div>

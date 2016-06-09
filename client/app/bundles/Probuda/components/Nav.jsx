@@ -61,8 +61,8 @@ export default class Nav extends React.Component {
                         data-toggle="dropdown">User <b className="caret"></b></button>
                 <ul className="dropdown-menu">
                   <li><Link to="/profile">Profile</Link></li>
-                  <li><a href="#">Settings</a></li>
-                  <li><a rel="nofollow" data-method="delete" href="/logout">
+                  <li><Link to="/settings">Settings</Link></li>
+                  <li><a data-method="delete" href="/logout">
                             Log out</a></li>
                 </ul>
               </li>
