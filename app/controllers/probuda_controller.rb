@@ -1,6 +1,5 @@
 class ProbudaController < ApplicationController
   include ReactOnRails::Controller
-  #before_action :logged_in_user
   
   before_action :set_user
  
@@ -23,13 +22,6 @@ class ProbudaController < ApplicationController
     redux_store("CounterReduxStore", props: @counterData)
   
   end
-  
-  # def logged_in_user
-  #   unless logged_in?
-  #     flash[:danger] = "Please log in."
-  #     redirect_to '#/login'
-  #   end
-  # end
   
   def set_user
     user_id = session[:user_id]
