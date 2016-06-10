@@ -24,7 +24,7 @@ export default class Signup extends React.Component {
           <div className="cover-container">
             <div className="masthead clearfix">
               <div className="inner">
-                <Link to="/cover"><h3 className="masthead-brand">Probuda</h3></Link>
+                <Link to="/"><h3 className="masthead-brand">Probuda</h3></Link>
                 <nav>
                   <ul className="nav masthead-nav">
                     <li className="active"><Link to="/signup">Sign Up</Link></li>

@@ -50,7 +50,7 @@ export default class Nav extends React.Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <IndexLink to="/" className="navbar-brand">Probuda</IndexLink>
+              <IndexLink to="/dashboard" className="navbar-brand">Probuda</IndexLink>
             </div>
             <ul className="nav navbar-nav navbar-right">
               

@@ -10,12 +10,15 @@
 </head>
 <body>
 <div>
-  <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-  <% end %>
-  
   <%= yield %>
+  <div class="flash-settings">
+    
+      <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    
 </div>
+
 <%= redux_store_hydration_data %>
 </body>
 </html>

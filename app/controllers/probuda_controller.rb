@@ -1,5 +1,6 @@
 class ProbudaController < ApplicationController
   include ReactOnRails::Controller
+  #before_action :logged_in_user
   
   before_action :set_user
  
@@ -23,6 +24,13 @@ class ProbudaController < ApplicationController
   
   end
   
+  # def logged_in_user
+  #   unless logged_in?
+  #     flash[:danger] = "Please log in."
+  #     redirect_to '#/login'
+  #   end
+  # end
+  
   def set_user
     user_id = cookies.signed[:user_id]
     if logged_in?
@@ -45,6 +53,8 @@ class ProbudaController < ApplicationController
         name: @user.name,
         email: @user.email,
         id: @user.id,
+        password: @user.password_digest,
+        password_confirmation: @user.password_digest,
         authenticity_token: form_authenticity_token,
         logged_in: logged_in?
       }

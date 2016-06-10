@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import ReactOnRails from 'react-on-rails';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+import RequireLoginContainer from './RequireLoginContainer';
 import ConfigureStore from '../store/ConfigureStore';
-import routes from '../routes/routes';
-import RouterContainer from '../containers/RouterContainer';
 
 
 
-export default class Router extends Component {
+export default class Root extends Component {
   
   
   render() {
@@ -16,10 +15,11 @@ export default class Router extends Component {
     const store = ReactOnRails.getStore("ProbudaStore");
     
     return (
+      <div className="content-wrapper">
         <Provider store={store}>
-          <RouterContainer />
+          <RequireLoginContainer />
         </Provider>
+      </div>
     );
   }
 }
-  
