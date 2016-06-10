@@ -32,7 +32,7 @@ class ProbudaController < ApplicationController
   # end
   
   def set_user
-    user_id = cookies.signed[:user_id]
+    user_id = session[:user_id]
     if logged_in?
       @user = User.find_by(id: user_id)
     else

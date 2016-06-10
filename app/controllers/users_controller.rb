@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Weclome to Probuda!"
-      redirect_to @user
+      redirect_to '#/dashboard'
     else
       render 'new'
     end

@@ -14,10 +14,7 @@ import Probuda from '../containers/Probuda';
 import Profile from '../components/Profile';
 import Settings from '../components/Settings'
 import Signup from '../components/Signup';
-import RequireLogin from '../containers/RequireLogin'
 
-
-  
 export default class RouterApp extends React.Component{
   
   static PropTypes = {
@@ -25,11 +22,10 @@ export default class RouterApp extends React.Component{
     data: PropTypes.object.isRequired,
     railsContext: PropTypes.object.isRequired
   }
-  
+
   constructor(props, context) {
     super(props, context);
   }
-  
   
   render() {
     const { data, railsContext } = this.props;
@@ -43,25 +39,19 @@ export default class RouterApp extends React.Component{
       }
     } 
     
-
-
-  
     return (
-
-        <Router history={hashHistory}>
-          <Route path="/" component={Cover} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/requirelogin" component={RequireLogin} />
-          <Route path="/dashboard" component={Probuda} >
-            <IndexRoute component={Home} />
-            <Route path="/about" component={About} onEnter={requireLogin} />
-            <Route path="/contact" component={Contact}/>
-            <Route path="/profile" component={Profile}/>
-            <Route path="/settings" component={Settings}  />
-          </Route>
-        </Router>
-        
+      <Router history={hashHistory}>
+        <Route path="/" component={Cover} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
+        <Route path="/dashboard" component={Probuda} onEnter={requireLogin} >
+          <IndexRoute component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/contact" component={Contact}/>
+          <Route path="/profile" component={Profile}/>
+          <Route path="/settings" component={Settings}  />
+        </Route>
+      </Router>
     );
   }
 }
