@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import { Route, Router, IndexRoute, hashHistory } from 'react-router';
 
 import About from '../components/About';
+import BudgetsContainer from '../components/BudgetsContainer';
 import Contact from '../components/Contact';
 import Cover from '../components/Cover';
 import Home from '../components/Home';
@@ -47,6 +48,7 @@ export default class RouterApp extends React.Component{
         <Route path="/dashboard" component={Probuda} onEnter={requireLogin} >
           <IndexRoute component={Home} />
           <Route path="/about" component={About} />
+          <Route path="/project1" component={BudgetsContainer} />
           <Route path="/contact" component={Contact}/>
           <Route path="/profile" component={Profile}/>
           <Route path="/settings" component={Settings}  />

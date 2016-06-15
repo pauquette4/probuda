@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
-  root               'probuda#index'
-  get    'login'  => 'sessions#new'
-  post   'login'  => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
+  root                 'probuda#index'
+  get    'login'   =>  'sessions#new'
+  post   'login'   =>  'sessions#create'
+  delete 'logout'  =>  'sessions#destroy'
+  get    'project' =>  'budgets#new'
+  post   'project' =>  'budgets#create'
+  resources :budgets,   only: [:destroy]
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

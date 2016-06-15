@@ -8,11 +8,7 @@ import ConfigureStore from '../store/ConfigureStore';
 
 
 export default class Root extends Component {
-  
-  
-  // componentWillMount() {
-  //   store.dispatch(setCounter(this.props.counter));
-  // }
+
   render() {
     
     const store = ReactOnRails.getStore("ProbudaStore");

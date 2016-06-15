@@ -56,6 +56,7 @@ export default class Nav extends React.Component {
               
               <li><Link to="/about">About</Link></li>
               <li><Link to="/contact">Contact</Link></li>
+              <li><Link to="/project1">Project 1</Link></li>
               <li className="dropdown">
                 <button className="btn btn-warning dropdown-toggle btn-right navbar-btn" type="button" 
                         data-toggle="dropdown">User <b className="caret"></b></button>

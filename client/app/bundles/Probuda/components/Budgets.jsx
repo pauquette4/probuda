@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
 import ReactOnRails from 'react-on-rails';
-import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+import BudgetsContainer from './BudgetsContainer';
 import ConfigureStore from '../store/ConfigureStore';
-import routes from '../routes/routes';
-import RouterContainer from '../containers/RouterContainer';
 
-
-
-export default class Router extends Component {
-  
+export default class Budgets extends Component {
   
   render() {
-    
     const store = ReactOnRails.getStore("ProbudaStore");
-    const { data, railsContext } = this.props;
+    
     return (
+      <div className="content-wrapper">
         <Provider store={store}>
-          <RouterContainer  />
+          <BudgetsContainer />
         </Provider>
+      </div>
     );
   }
-}
   
+}

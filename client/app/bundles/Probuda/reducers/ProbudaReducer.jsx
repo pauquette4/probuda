@@ -7,7 +7,8 @@ const initialState = {
   email: '',
   password: '',
   password_confirmation: '',
-  logged_in: false
+  logged_in: false,
+  // budgets: []
 };
 
 export default function ProbudaReducer(state = initialState, action) {
@@ -23,6 +24,20 @@ export default function ProbudaReducer(state = initialState, action) {
       return password_confirmation
     case actionTypes.LOGGED_IN:
       return logged_in
+    // case actionTypes.ADD_BUDGET_ROW:
+    //   return [
+    //     ...state,
+    //     {
+    //       budgets: [
+    //       description: budgets.description,
+    //       amount: budgets.amount,
+    //       units: budgets.units,
+    //       x: budgets.x,
+    //       rate: budgets.rate,
+    //       ]
+          
+      //   }
+      // ];
     default:
       return state
   }

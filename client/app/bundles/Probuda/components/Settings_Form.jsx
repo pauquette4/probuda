@@ -46,7 +46,7 @@ export default class Settings_Form extends React.Component {
     const { data, railsContext } = this.props;
     const { authenticity_token, name, id, email, logged_in } = data;
     return(
-      <div className="content-wrapper">
+      <div>
         <h1>Update your profile below, {name}:</h1>
         <h2>{logged_in ? "Yes" : "No"}</h2>
         <br />

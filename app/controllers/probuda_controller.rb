@@ -48,7 +48,8 @@ class ProbudaController < ApplicationController
         password: @user.password_digest,
         password_confirmation: @user.password_digest,
         authenticity_token: form_authenticity_token,
-        logged_in: logged_in?
+        logged_in: logged_in?,
+        budgets: @user.budgets.all
       }
     }
   end
