@@ -15,7 +15,8 @@ export default class Settings_Form extends React.Component {
     this.handleNameUpdate = this.handleNameUpdate.bind(this);
     this.handleEmailUpdate = this.handleEmailUpdate.bind(this);
     this.handlePasswordUpdate = this.handlePasswordUpdate.bind(this);
-    this.handlePasswordConfirmationUpdate = this.handlePasswordConfirmationUpdate.bind(this);
+    this.handlePasswordConfirmationUpdate = 
+      this.handlePasswordConfirmationUpdate.bind(this);
   }
   
   handleNameUpdate(e){
@@ -52,7 +53,8 @@ export default class Settings_Form extends React.Component {
         <br />
         <div class="row">
           <div className="col-sm-6 col-sm-offset-3">
-            <form className="edit_user" id={`edit_user_${id}`} action={`/users/${id}`}
+            <form className="edit_user" id={`edit_user_${id}`} 
+                  action={`/users/${id}`}
                   accept-charset="UTF-8" method="post" >
               <input name="utf8" type="hidden" value="&#x2713;" />
               <input type="hidden" name="_method" value="patch" />
@@ -72,19 +74,22 @@ export default class Settings_Form extends React.Component {
               </div>
               
               <div className="form-group">
-                <input type="password" className="form-control" placeholder="Password"
+                <input type="password" className="form-control" 
+                       placeholder="Password"
                        id="user_password" name="user[password]" 
                        onChange={this.handlePasswordUpdate} />
               </div>
               
               <div className="form-group">
-                <input type="password" className="form-control" placeholder="Confirmation"
+                <input type="password" className="form-control" 
+                       placeholder="Confirmation"
                        id="user_password_confirmation" 
                        name="user[password_confirmation]" 
                        onChange={this.handlePasswordConfirmationUpdate} />
               </div>
               
-              <input className="btn btn-lg btn-default btn-cover-invert" name="commit" 
+              <input className="btn btn-lg btn-default btn-cover-invert" 
+                     name="commit" 
                      type="submit" value="Save Changes" 
                      data-disable-with="Save Changes" />
             </form>

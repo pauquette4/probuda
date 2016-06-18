@@ -35,21 +35,38 @@ export function logged_in(logged_in) {
   }
 }
 
-export function addBudgetRow(description, amount, units, x, rate, total) {
+export function addBudgetRow(id, description, amount, units, x, rate, total, category) {
   return {
     type: types.ADD_BUDGET_ROW,
+    id,
+    description, 
+    amount, 
+    units, 
+    x, 
+    rate,
+    total,
+    category
+  }
+}
+
+export function deleteBudgetRow(row) {
+  return { 
+    type: types.DELETE_BUDGET_ROW,
+    row
+  }
+}
+
+export function editBudgetRow(budgetRow, id, description, amount, units, x, 
+                              rate, total) {
+  return {
+    type: types.EDIT_BUDGET_ROW,
+    budgetRow,
+    id,
     description, 
     amount, 
     units, 
     x, 
     rate,
     total
-  }
-}
-
-export function deleteBudgetRow(id) {
-  return { 
-    type: types.DELETE_BUDGET_ROW,
-    id
   }
 }

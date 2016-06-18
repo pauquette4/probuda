@@ -9,6 +9,9 @@ gem "react_on_rails", "~> 5"
 #Use flux
 gem 'flux-rails-assets'
 
+gem 'gon'
+gem 'rabl'
+
 # Use sqlite3 as the database for Active Record
 
 

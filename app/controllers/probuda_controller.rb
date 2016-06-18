@@ -9,6 +9,7 @@ class ProbudaController < ApplicationController
   
   def index
     @user = User.new
+    gon.watch.newRow = Budget.last.id
   end
   
   def cover
