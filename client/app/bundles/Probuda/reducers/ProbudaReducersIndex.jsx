@@ -1,10 +1,9 @@
 import ProbudaReducer from './ProbudaReducer';
 
-import budgetApp from './BudgetsReducer';
-import RailsContextReducer from './RailsContextReducer'
+import projectApp from './ProjectsReducer';
+import RailsContextReducer from './RailsContextReducer';
 
 export default {
-  probudaData: ProbudaReducer, 
-  probudaData: budgetApp,
+  probudaData: projectApp,
   railsContext: RailsContextReducer
 };

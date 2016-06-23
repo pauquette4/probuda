@@ -14,8 +14,14 @@ Rails.application.config.assets.version = '1.0'
 # you could also consider creating symlinks there that point to the original
 # rails directories. In that case, you would not add these paths here.
 
-
-Rails.application.config.assets.precompile += %w( server-bundle.js )
-
 # Add folder with webpack generated assets to assets.paths
 Rails.application.config.assets.paths << Rails.root.join("app", "assets", "webpack")
+
+Rails.application.config.assets.precompile << "server-bundle.js" 
+
+type = ENV["REACT_ON_RAILS_ENV"] == "HOT" ? "non_webpack" : "static"
+Rails.application.config.assets.precompile +=
+  [
+    "application_#{type}.js",
+    "application_#{type}.css"
+  ]

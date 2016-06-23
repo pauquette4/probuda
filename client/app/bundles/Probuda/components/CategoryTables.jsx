@@ -1,21 +1,26 @@
 import React, { PropTypes } from 'react';
+import PureComponent from './PureComponent'
+import ReactOnRails from 'react-on-rails';
 import Rails_Context from './Rails_Context';
 
 import Budget from './Budget';
-
-export default class Budget_Table extends React.Component {
+export default class Budget_Table extends PureComponent {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     data: PropTypes.object.isRequired,
     railsContext: PropTypes.object.isRequired
   };
-  
   constructor(props, context) {
     super(props, context);
+    const store = ReactOnRails.getStore("ProbudaStore");
   }
   
   ablExpenses() {
-    return this.props.data.budgets.filter((val) => { 
+    const { actions, data, railsContext } = this.props;
+    const { deleteBudgetRow } = actions;
+    const { budgets, currentProject } = data;
+    var id = currentProject.index;
+    return this.props.data.budgets[id].filter((val) => { 
       return val.category === "Above the Line"}).filter ((val) => {
         return val.total >= 0;
       }).reduce((prev, curr) => {
@@ -24,7 +29,11 @@ export default class Budget_Table extends React.Component {
   }
   
   preExpenses() {
-    return this.props.data.budgets.filter((val) => { 
+    const { actions, data, railsContext } = this.props;
+    const { deleteBudgetRow } = actions;
+    const { budgets, currentProject } = data;
+    var id = currentProject.index;
+    return this.props.data.budgets[id].filter((val) => { 
       return val.category === "Pre Production"}).filter ((val) => {
         return val.total >= 0;
       }).reduce((prev, curr) => {
@@ -33,7 +42,11 @@ export default class Budget_Table extends React.Component {
   }
   
   prodExpenses() {
-    return this.props.data.budgets.filter((val) => { 
+    const { actions, data, railsContext } = this.props;
+    const { deleteBudgetRow } = actions;
+    const { budgets, currentProject } = data;
+    var id = currentProject.index;
+    return this.props.data.budgets[id].filter((val) => { 
       return val.category === "Production"}).filter ((val) => {
         return val.total >= 0;
       }).reduce((prev, curr) => {
@@ -42,7 +55,11 @@ export default class Budget_Table extends React.Component {
   }
   
   postExpenses() {
-    return this.props.data.budgets.filter((val) => { 
+    const { actions, data, railsContext } = this.props;
+    const { deleteBudgetRow } = actions;
+    const { budgets, currentProject } = data;
+    var id = currentProject.index;
+    return this.props.data.budgets[id].filter((val) => { 
       return val.category === "Post Production"}).filter ((val) => {
         return val.total >= 0;
       }).reduce((prev, curr) => {
@@ -51,17 +68,26 @@ export default class Budget_Table extends React.Component {
   }
   
   otherExpenses() {
-    return this.props.data.budgets.filter((val) => { 
+    const { actions, data, railsContext } = this.props;
+    const { deleteBudgetRow } = actions;
+    const { budgets, currentProject } = data;
+    var id = currentProject.index;
+    return this.props.data.budgets[id].filter((val) => { 
       return val.category === "Other"}).filter ((val) => {
         return val.total >= 0;
       }).reduce((prev, curr) => {
           return prev + parseFloat(curr.total);
     }, 0);
   }
+  
   render(){
-    const { actions, data, railsContext } = this.props;
+    const { actions, data, railsContext, budgetList } = this.props;
     const { deleteBudgetRow } = actions;
-    const { budgets } = data;
+    const { budgets, currentProject } = data;
+    var projectID = currentProject.index;
+    
+    //  TODO : id = project_id ...insert id below "budgets[project_id]"
+
     
     return(
       <div>
@@ -71,7 +97,7 @@ export default class Budget_Table extends React.Component {
               Above the Line - {totalFormat(this.ablExpenses())}
             </div>
           </div>
-          <div className="table-responsive" id="ablTable">
+          <div className="table-responsive collapse" id="ablTable">
             <table className="table table-striped table-bordered table-hover 
                               table-condensed">
               <thead>
@@ -87,12 +113,12 @@ export default class Budget_Table extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {budgets.filter((val) => { 
+                {budgets[projectID].filter((val) => { 
                 return val.category === "Above the Line"})
                   .map((budgets, index) => {
                     var rowNumber = 1 + index++;
                     return <Budget key={budgets.id} budgets={budgets} 
-                                   rowNumber={rowNumber}
+                                   rowNumber={rowNumber} budgetList={budgetList}
                                    {...{actions, data, railsContext}}/>
                   })
                 }
@@ -107,7 +133,7 @@ export default class Budget_Table extends React.Component {
               Pre Production - {totalFormat(this.preExpenses())}
             </div>
           </div>
-          <div className="table-responsive" id="preTable">
+          <div className="table-responsive collapse" id="preTable">
             <table className="table table-striped table-bordered table-hover 
                               table-condensed">
               <thead>
@@ -123,12 +149,12 @@ export default class Budget_Table extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {budgets.filter((val) => { 
+                {budgets[projectID].filter((val) => { 
                 return val.category === "Pre Production"})
                   .map((budgets, index) => {
                     var rowNumber = 1 + index++;
                     return <Budget key={budgets.id} budgets={budgets} 
-                                   rowNumber={rowNumber}
+                                   rowNumber={rowNumber} budgetList={budgetList}
                                    {...{actions, data, railsContext}}/>
                   })
                 }
@@ -143,7 +169,7 @@ export default class Budget_Table extends React.Component {
               Production - {totalFormat(this.prodExpenses())}
             </div>
           </div>
-          <div className="table-responsive" id="prodTable">
+          <div className="table-responsive collapse" id="prodTable">
             <table className="table table-striped table-bordered table-hover 
                               table-condensed">
               <thead>
@@ -159,12 +185,12 @@ export default class Budget_Table extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {budgets.filter((val) => { 
+                {budgets[projectID].filter((val) => { 
                 return val.category === "Production"})
                   .map((budgets, index) => {
                     var rowNumber = 1 + index++;
                     return <Budget key={budgets.id} budgets={budgets} 
-                                   rowNumber={rowNumber}
+                                   rowNumber={rowNumber} budgetList={budgetList}
                                    {...{actions, data, railsContext}}/>
                   })
                 }
@@ -179,7 +205,7 @@ export default class Budget_Table extends React.Component {
               Post Production - {totalFormat(this.postExpenses())}
             </div>
           </div>
-          <div className="table-responsive" id="postTable">
+          <div className="table-responsive collapse" id="postTable">
             <table className="table table-striped table-bordered table-hover 
                               table-condensed">
               <thead>
@@ -195,12 +221,12 @@ export default class Budget_Table extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {budgets.filter((val) => { 
+                {budgets[projectID].filter((val) => { 
                 return val.category === "Post Production"})
                   .map((budgets, index) => {
                     var rowNumber = 1 + index++;
                     return <Budget key={budgets.id} budgets={budgets} 
-                                   rowNumber={rowNumber}
+                                   rowNumber={rowNumber} budgetList={budgetList}
                                    {...{actions, data, railsContext}}/>
                   })
                 }
@@ -215,7 +241,7 @@ export default class Budget_Table extends React.Component {
               Other - {totalFormat(this.otherExpenses())}
             </div>
           </div>
-          <div className="table-responsive" id="otherTable">
+          <div className="table-responsive collapse" id="otherTable">
             <table className="table table-striped table-bordered table-hover 
                               table-condensed">
               <thead>
@@ -231,12 +257,12 @@ export default class Budget_Table extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                {budgets.filter((val) => { 
+                {budgets[projectID].filter((val) => { 
                 return val.category === "Other"})
                   .map((budgets, index) => {
                     var rowNumber = 1 + index++;
                     return <Budget key={budgets.id} budgets={budgets} 
-                                   rowNumber={rowNumber}
+                                   rowNumber={rowNumber} budgetList={budgetList}
                                    {...{actions, data, railsContext}}/>
                   })
                 }

@@ -1,65 +1,62 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import Rails_Context from './Rails_Context';
+import ReactOnRails from 'react-on-rails';
+import { connect } from 'react-redux';
 import { Link, IndexLink } from 'react-router';
-import ProjectStore from '../stores/ProjectStore';
-import * as ProjectActions from '../actions/ProjectActions';
-import Project from './Project';
+
+import Projects from './Projects';
+import ProjectForm from './ProjectForm';
 
 export default class Nav extends React.Component {
-  constructor(){
-    super();
-    this.getProjects = this.getProjects.bind(this);
-    this.state = {
-      projects: ProjectStore.getAll(),
-    };
-  }
+  static propTypes = {
+    actions: PropTypes.object.isRequired,
+    data: PropTypes.object.isRequired,
+    currentProject: PropTypes.object.isRequired,
+    railsContext: PropTypes.object.isRequired,
+  };
   
-  componentWillMount(){
-    ProjectStore.on("change", this.getProjects);
+  constructor(props, context) {
+    super(props, context);
   }
-  
-  componentWillUnmount(){
-    ProjectStore.removeListener("change", this.getProjects);
-  }
-  
-  getProjects(){
-    this.setState({
-      projects: ProjectStore.getAll(),
-    });
-  }
-  
-  createProject() {
-    ProjectActions.createProject(Date.now());
-  }
-  
+
   render() {
-    const { projects } = this.state;
-    const ProjectComponents = projects.map((project) => {
-      return <li><Link to="#"><Project key={project.id} {...project}/></Link></li>;
-    });
-    
+    const { actions, data, currentProject, railsContext } = this.props;
+    const { projects } = data
+    var ProjectList = projects.map((projects, index) => {
+      var index = index++;
+      return <Projects key={projects.id} projects={projects} index={index}
+                           {...{actions, data, currentProject, 
+                           railsContext}}/>;
+    })
     
     return (
        <div className="wrapper">
-         <nav className="navbar navbar-inverse navbar-fixed-top top-nav" role="navigation">
+         <nav className="navbar navbar-inverse navbar-fixed-top top-nav" 
+              role="navigation">
           <div className="container-fluid">
             <div className="navbar-header">
-              <button type="button" className="navbar-toggle" data-toggle="collapse"
+              <button type="button" className="navbar-toggle" 
+                      data-toggle="collapse"
                       data-target=".navbar-ex1-collapse">
                 <span className="sr-only">Toggle navigation</span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <IndexLink to="/dashboard" className="navbar-brand">Probuda</IndexLink>
+              <IndexLink to="/dashboard" className="navbar-brand">
+                Probuda
+              </IndexLink>
             </div>
             <ul className="nav navbar-nav navbar-right">
               
               <li><Link to="/about">About</Link></li>
               <li><Link to="/contact">Contact</Link></li>
-              <li><Link to="/project1">Project 1</Link></li>
               <li className="dropdown">
-                <button className="btn btn-warning dropdown-toggle btn-right navbar-btn" type="button" 
-                        data-toggle="dropdown">User <b className="caret"></b></button>
+                <button className="btn btn-warning dropdown-toggle btn-right 
+                                   navbar-btn" 
+                        type="button" 
+                        data-toggle="dropdown">User <b className="caret"></b>
+                </button>
                 <ul className="dropdown-menu">
                   <li><Link to="/profile">Profile</Link></li>
                   <li><Link to="/settings">Settings</Link></li>
@@ -71,11 +68,11 @@ export default class Nav extends React.Component {
           </div>
           <div className="collapse navbar-collapse navbar-ex1-collapse sidebar">
             <ul className="nav navbar-nav side-nav">
-              {ProjectComponents}
-              <li>
-                <button onClick={this.createProject.bind(this)}>Create!</button>
-              </li>
-            </ul>
+              {ProjectList}
+              <br />
+              <ProjectForm {...{actions, data, railsContext, 
+                                currentProject}} />
+             </ul>
           </div>
         </nav> 
       </div>

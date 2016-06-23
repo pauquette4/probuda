@@ -1,5 +1,5 @@
 class Budget < ApplicationRecord
-  belongs_to :user
-  validates :user_id, presence: true
+  belongs_to :projects
+  validates :project_id, presence: true
   validates :description, presence: true
 end

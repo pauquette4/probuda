@@ -1,43 +1,9 @@
 import * as types from '../constants/ProbudaConstants'
 
-export function updateName(name) {
-  return {
-    type: types.PROBUDA_NAME_UPDATE,
-    name
-  };
-}
-
-export function updateEmail(email) {
-  return {
-    type: types.PROBUDA_EMAIL_UPDATE,
-    email
-  };
-}
-
-export function updatePassword(password) {
-  return {
-    type: types.PROBUDA_PASSWORD_UPDATE,
-    password
-  };
-}
-
-export function updatePasswordConfirmation(password_confirmation) {
-  return {
-    type: types.PROBUDA_PASSWORD_CONFIRMATION_UPDATE,
-    password_confirmation
-  };
-}
-
-export function logged_in(logged_in) {
-  return {
-    type: types.PROBUDA_LOGGED_IN,
-    logged_in
-  }
-}
-
-export function addBudgetRow(id, description, amount, units, x, rate, total, category) {
+export function addBudgetRow(index, id, description, amount, units, x, rate, total, category) {
   return {
     type: types.ADD_BUDGET_ROW,
+    index,
     id,
     description, 
     amount, 
@@ -45,22 +11,35 @@ export function addBudgetRow(id, description, amount, units, x, rate, total, cat
     x, 
     rate,
     total,
-    category
+    category,
+    
   }
 }
 
-export function deleteBudgetRow(row) {
+export function autoBudgetRow(index, id, budgetData) {
+  return {
+    type: types.AUTO_BUDGET_ROW,
+    index,
+    id,
+    budgetData,
+    
+  }
+}
+
+export function deleteBudgetRow(index, row) {
   return { 
     type: types.DELETE_BUDGET_ROW,
+    index,
     row
   }
 }
 
-export function editBudgetRow(budgetRow, id, description, amount, units, x, 
+export function editBudgetRow(index, row, id, description, amount, units, x, 
                               rate, total) {
   return {
     type: types.EDIT_BUDGET_ROW,
-    budgetRow,
+    index,
+    row,
     id,
     description, 
     amount, 
@@ -68,5 +47,38 @@ export function editBudgetRow(budgetRow, id, description, amount, units, x,
     x, 
     rate,
     total
+  }
+}
+
+export function addProject(id, title) {
+  return {
+    type: types.ADD_PROJECT,
+    id,
+    title,
+  }
+}
+
+// export function deleteProject(id, title) {
+//   return {
+//     type: types.DELETE_PROJECT,
+//     id,
+//     title
+//   }
+// }
+
+// export function editProject(id, title) {
+//   return {
+//     type: types.EDIT_PROJECT,
+//     id,
+//     title
+//   }
+// }
+
+export function changeProject(index, id, title) {
+  return {
+    type: types.CHANGE_PROJECT,
+    index,
+    id,
+    title
   }
 }

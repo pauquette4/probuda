@@ -5,23 +5,25 @@ import { bindActionCreators } from 'redux';
 import Budget_Table from '../components/Budget_Table'
 import * as ProbudaActions from '../actions/ProbudaActions'
 
-const BudgetsContainer = ({actions, data, railsContext}) => {
+const BudgetsContainer = ({actions, data, currentProject, railsContext}) => {
   return (
-      <Budget_Table {...{actions, data, railsContext}} />
+      <Budget_Table {...{actions, data, currentProject, railsContext}} />
   );
 }
 
 BudgetsContainer.propTypes = {
   actions: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
-  railsContext: PropTypes.object.isRequired
+  railsContext: PropTypes.object.isRequired,
+  currentProject: PropTypes.object.isRequired,
 };
+
 
 function mapStateToProps(state) {
   return {
     data: state.probudaData,
     railsContext: state.railsContext,
-    // budgets: state.budgets
+    currentProject: state.probudaData.currentProject,
   };
 }
 

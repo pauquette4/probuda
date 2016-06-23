@@ -20,8 +20,7 @@
 // about supported directives.
 //
 
-//= require flux
-//= require eventemitter
+
 // require jquery
 // require jquery_ujs
 //= require bootstrap-sprockets

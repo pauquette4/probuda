@@ -45,6 +45,7 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify(nodeEnv),
       },
+      TRACE_TURBOLINKS: devBuild,
     }),
     
    
@@ -73,8 +74,9 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/
       },
-      // Not all apps require jQuery. Many Rails apps do, such as those using TurboLinks or
-      // bootstrap js
+      { test: /\.(woff2?|svg)$/, loader: 'url?limit=10000' },
+      { test: /\.(ttf|eot)$/, loader: 'file' },
+      { test: /\.(jpe?g|png|gif|svg|ico)$/, loader: 'url?limit=10000' },
       { test: require.resolve('jquery'), loader: 'expose?jQuery' },
       { test: require.resolve('jquery'), loader: 'expose?$' },
       { test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports?jQuery=jquery' }

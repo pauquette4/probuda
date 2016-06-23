@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import Rails_Context from './Rails_Context';
 
+import Rails_Context from './Rails_Context';
 
 var initialState ={
   description: '',
@@ -10,7 +10,6 @@ var initialState ={
   x: 1,
   rate: 1,
   total: 1,
-  category: 'Above the Line',
   editing: false
 }
 
@@ -29,14 +28,16 @@ export default class Budget extends React.Component {
   
   handleDelete(row, id, e) {
     e.preventDefault();
-    const { actions } = this.props;
+    const { actions, data } = this.props;
+    const { currentProject } = data;
     const { deleteBudgetRow } = actions;
+    var index = currentProject.index
     $.ajax ({
       method: 'DELETE',
       url: "/budgets/" + id,
       dataType: 'JSON',
       success: ( (data) => {
-        deleteBudgetRow(row);
+        deleteBudgetRow(index, row);
       })
     });
   }
@@ -60,12 +61,13 @@ export default class Budget extends React.Component {
     this.setState(change)
   }
   
-  handleUpdate(id, e) {
+  handleUpdate(row, id, e) {
     e.preventDefault();
-    const { actions } = this.props;
+    const { actions, data } = this.props;
     const { editBudgetRow } = actions;
+    const { budgets, currentProject } = data
    
-     var data = {
+    var editedData = {
       description: this.state.description,
       amount: this.state.amount,
       units: this.state.units,
@@ -80,14 +82,15 @@ export default class Budget extends React.Component {
     const x = this.state.x;
     const rate = this.state.rate;
     var total = amount*units*rate*x;
+    var index = currentProject.index
+    
     $.ajax ({
       method: 'PUT',
       url: "/budgets/" + id,
       dataType: 'JSON',
-      data: { budgets: data },
+      data: { budgets: editedData },
       success: ( (data) => {
-        var budgetRow = this.props.data.budgets[0];
-        editBudgetRow(budgetRow, id, description, amount, units, 
+        editBudgetRow(index, row, id, description, amount, units, 
                       x, rate, total);
       })
     });
@@ -167,7 +170,7 @@ export default class Budget extends React.Component {
         </td>
         <td>
           <a className="btn btn-primary"
-                  onClick={this.handleUpdate.bind(this, budgets.id)}>
+                  onClick={this.handleUpdate.bind(this, rowNumber, budgets.id)}>
             Update
           </a>
         </td>

@@ -6,10 +6,19 @@
     "npm": "3.5.0"
   },
   "scripts": {
-    "build:client": "NODE_ENV=production webpack --config webpack.client.rails.config.js",
+    "lint": "npm run eslint --silent && npm run jscs --silent",
+    "eslint": "eslint --ext .js,.jsx .",
+    "jscs": "jscs --verbose .",
+    "jscs:fix": "jscs --verbose -x . --silent",
+    "test": "npm run build:test && rspec",
+    "build:test": "npm run build:client && npm run build:server",
+    "build:production:client": "NODE_ENV=production webpack --config webpack.client.rails.config.js",
+    "build:production:server": "NODE_ENV=production webpack --config webpack.server.rails.config.js",
+    "build:client": "webpack --config webpack.client.rails.base.config.js",
     "build:dev:client": "webpack -w --config webpack.client.rails.config.js",
-    "build:production:client": "NODE_ENV=production webpack --config webpack.client.rails.build.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:dev:server": "webpack -w --config webpack.server.rails.config.js",
+    "build:server": "webpack --config webpack.server.rails.config.js",
+    "hot-assets": "babel-node server-rails-hot.js"
   },
   "dependencies": {
     "autoprefixer": "^6.3.5",
@@ -26,15 +35,16 @@
     "css-loader": "^0.23.1",
     "es5-shim": "^4.5.7",
     "expose-loader": "^0.7.1",
-    "flux": "^2.1.1",
     "imports-loader": "^0.6.5",
     "jquery": "^2.2.2",
     "jquery-ujs": "^1.2.1",
     "loader-utils": "^0.2.13",
     "lodash": "^4.7.0",
+    "normalizr": "^2.1.0",
     "react": "^0.14.8 || ^15.0.0",
     "react-dom": "^0.14.8 || ^15.0.0",
     "react-on-rails": "5.2.0",
+    "react-pure-render": "^1.0.2",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "redux": "^3.5.2",
@@ -45,6 +55,14 @@
     "babel-plugin-react-html-attrs": "^2.0.0",
     "bootstrap": "^3.3.6",
     "script-loader": "^0.7.0",
-    "style-loader": "^0.13.1"
+    "style-loader": "^0.13.1",
+    "babel-plugin-react-transform": "^2.0.2",
+    "body-parser": "^1.15.0",
+    "eslint": "^2.6.0",
+    "eslint-config-shakacode": "^4.0.0",
+    "eslint-plugin-react": "^4.2.3",
+    "jscs": "^2.11.0",
+    "react-transform-hmr": "^1.0.4",
+    "webpack-dev-server": "^1.14.1"
   }
 }

@@ -48,12 +48,17 @@ export default class RouterApp extends React.Component{
         <Route path="/dashboard" component={Probuda} onEnter={requireLogin} >
           <IndexRoute component={Home} />
           <Route path="/about" component={About} />
-          <Route path="/project1" component={BudgetsContainer} />
+          <Route path="/projects" component={BudgetsContainer} />
           <Route path="/contact" component={Contact}/>
           <Route path="/profile" component={Profile}/>
           <Route path="/settings" component={Settings}  />
         </Route>
       </Router>
+      
+      // <Router history={hashHistory}>
+      //   <Route path="/" component={PracticeNameApp} />
+        
+      // </Router>
     );
   }
 }

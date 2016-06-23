@@ -14,11 +14,11 @@ class BudgetsController < ApplicationController
   end
   
   def create
-    @budget = current_user.budgets.build(budget_params)
+    @budget = Budget.new(budget_params)
     if @budget.save
       render json: @budget
     else
-      render json: @budget.errors, status: unprocessable_entity
+      render json: @budget.errors, status: :unprocessable_entity
     end
   end
   
@@ -41,7 +41,7 @@ class BudgetsController < ApplicationController
   
     def budget_params
       params.require(:budgets).permit(:description, :amount, :units, :x, :rate, 
-                                     :total, :category)
+                                     :total, :category, :project_id)
     end
   
 end
